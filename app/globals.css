@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f5f7fa;
+  --foreground: #343c6a;
+
+  --primary: #343c6a;
+  --primary-foreground: #ffffff;
+
+  --secondary: #718ebf;
+  --secondary-foreground: #ffffff;
+
+  --navy: #343c6a;
+  --navy-foreground: #ffffff;
+
+  --blue-gray: #8ba3cb;
+  --light-gray: #f3f3f5;
+
+  --border: #dfe5ee;
+
+  --red: #ff4b4a;
+  --green: #41d4a8;
+  --orange: #fc7900;
+  --dark: #232323;
+
+  --sidebar-text-inactive: #b1b1b1;
+  --sidebar-text-active: #232323;
+
+  --border: #dfeaf2;
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-navy: var(--navy);
+  --color-navy-foreground: var(--navy-foreground);
+  --color-blue-gray: var(--blue-gray);
+  --color-light-gray: var(--light-gray);
+  --color-border: var(--border);
+  --color-red: var(--red);
+  --color-green: var(--green);
+  --color-orange: var(--orange);
+  --color-dark: var(--dark);
+  --color-sidebar-text-inactive: var(--sidebar-text-inactive);
+  --color-sidebar-text-active: var(--sidebar-text-active);
+  --color-border: var(--border);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
