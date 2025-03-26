@@ -1,3 +1,4 @@
+import ExpenseStatistics from "@/components/dashboard/ExpenseStatistics";
 import MyCards from "@/components/dashboard/MyCards";
 import QuickTransfer from "@/components/dashboard/QuickTransfer";
 import RecentTransactions from "@/components/dashboard/RecentTransactions";
@@ -9,6 +10,7 @@ export default function page() {
   return (
     <>
       <div>
+        <ExpenseStatistics />
         <RecentTransactions />
         <QuickTransfer />
         <MyCards />
