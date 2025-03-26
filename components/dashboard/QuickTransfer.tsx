@@ -57,7 +57,7 @@ const QuickTransfer = () => {
   };
   return (
     <div className="flex flex-col gap-5 items-start justify-start">
-      <h2 className="text-[#343c6a] text-[22px] font-semibold">
+      <h2 className="text-primary text-[22px] font-semibold">
         Quick Transfer
       </h2>
       <div className="bg-white rounded-[25px] w-[445px] py-8 px-6">

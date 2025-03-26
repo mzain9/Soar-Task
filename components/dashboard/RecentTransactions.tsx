@@ -58,7 +58,7 @@ const formatDate = (dateString: string): string => {
 const RecentTransactions: React.FC = () => {
   return (
     <div className="flex flex-col gap-5 items-start justify-start">
-      <h2 className="text-[#343c6a] text-[22px] font-semibold">
+      <h2 className="text-primary text-[22px] font-semibold">
         Recent Transactions
       </h2>
       <div className="bg-white rounded-[25px] w-[350px] p-4">
