@@ -1,3 +1,4 @@
+import BalanceHistory from "@/components/dashboard/BalanceHistory";
 import ExpenseStatistics from "@/components/dashboard/ExpenseStatistics";
 import MyCards from "@/components/dashboard/MyCards";
 import QuickTransfer from "@/components/dashboard/QuickTransfer";
@@ -9,6 +10,7 @@ export default function page() {
   return (
     <>
       <div>
+        <BalanceHistory />
         <WeeklyActivity />
         <ExpenseStatistics />
         <RecentTransactions />
