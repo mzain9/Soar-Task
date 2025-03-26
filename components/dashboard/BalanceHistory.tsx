@@ -13,30 +13,11 @@ import {
     type ChartOptions,
 } from "chart.js"
 import { Line } from "react-chartjs-2"
+import type { BalanceHistory } from "@/types"
 
 // Register ChartJS components
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Tooltip, Filler)
 
-const labels = ["Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "Jan"]
-const values = [120, 330, 200, 780, 220, 570, 200]
-
-// Chart data configuration
-export const chartData: ChartData<"line"> = {
-    labels,
-    datasets: [
-        {
-            data: values,
-            borderColor: "#1814F3",
-            backgroundColor: "rgba(24, 20, 243, 0.1)",
-            fill: true,
-            pointRadius: 0, // Hide points by default
-            pointHoverRadius: 6, // Show on hover
-            pointBackgroundColor: "#1814F3",
-            pointBorderColor: "white",
-            pointBorderWidth: 2,
-        },
-    ],
-}
 
 // Chart options
 const options: ChartOptions<"line"> = {
@@ -109,8 +90,29 @@ const options: ChartOptions<"line"> = {
     },
 }
 
-function BalanceHistory() {
+interface BalanceHistoryProps {
+    balanceHistory: BalanceHistory[];
+}
+
+const BalanceHistory: React.FC<BalanceHistoryProps> = ({ balanceHistory }) => {
     const chartRef = useRef<ChartJS<"line">>(null)
+
+    const chartData: ChartData<"line"> = {
+        labels: balanceHistory.map((stat) => stat.label),
+        datasets: [
+            {
+                data: balanceHistory.map((stat) => stat.value),
+                borderColor: "#1814F3",
+                backgroundColor: "rgba(24, 20, 243, 0.1)",
+                fill: true,
+                pointRadius: 0, // Hide points by default
+                pointHoverRadius: 6, // Show on hover
+                pointBackgroundColor: "#1814F3",
+                pointBorderColor: "white",
+                pointBorderWidth: 2,
+            },
+        ],
+    }
 
     return (
         <div className="flex flex-col gap-5 items-start justify-start">

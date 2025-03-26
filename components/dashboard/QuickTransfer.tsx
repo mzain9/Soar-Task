@@ -2,34 +2,15 @@
 import { useRef, useState } from "react";
 import Image from "next/image";
 import { toast } from "sonner";
+import type { QuickTransfer } from "@/types";
 
-interface User {
-  id: number;
-  name: string;
-  role: string;
-  avatar: string;
+
+interface QuickTransferProps {
+  quickTransfer: QuickTransfer[];
 }
-
-const users: User[] = [
-  { id: 1, name: "Livia Bator", role: "CEO", avatar: "/icons/user/user1.png" },
-  {
-    id: 2,
-    name: "Randy Press",
-    role: "Director",
-    avatar: "/icons/user/user2.png",
-  },
-  { id: 3, name: "Workman", role: "Designer", avatar: "/icons/user/user3.png" },
-  {
-    id: 4,
-    name: "Alex Morgan",
-    role: "Manager",
-    avatar: "/icons/user/user3.png",
-  },
-];
-
-const QuickTransfer = () => {
+const QuickTransfer:React.FC<QuickTransferProps> = ({quickTransfer}) => {
   const [amount, setAmount] = useState(525.5);
-  const [selectedUser, setSelectedUser] = useState<number | null>(users[0].id);
+  const [selectedUser, setSelectedUser] = useState<number | null>(quickTransfer[0].id);
   const scrollContainer = useRef<HTMLDivElement>(null);
 
   const scrollRight = () => {
@@ -49,7 +30,7 @@ const QuickTransfer = () => {
     }
     toast.success(
       `Sent $${amount} to ${
-        users.find((user) => user.id === selectedUser)?.name
+        quickTransfer.find((user) => user.id === selectedUser)?.name
       }`
     );
     setAmount(0);
@@ -66,8 +47,7 @@ const QuickTransfer = () => {
             className="flex items-center gap-4 overflow-x-auto w-[350px] scrollbar-hidden"
             ref={scrollContainer}
           >
-            {users
-              // .slice(visibleIndex, visibleIndex + 3)
+            {quickTransfer
               .map(({ id, name, role, avatar }) => (
                 <div
                   key={id}

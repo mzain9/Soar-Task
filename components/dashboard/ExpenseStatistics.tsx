@@ -1,34 +1,18 @@
 "use client";
 
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, ChartOptions } from "chart.js";
 import { Pie } from "react-chartjs-2";
 import ChartDataLabels from "chartjs-plugin-datalabels";
-import { Chart, Plugin } from "chart.js";
-
-interface CustomShapePlugin extends Plugin {
-    id: string;
-    beforeDraw: (chart: Chart) => void;
-}
+import { Chart } from "chart.js";
+import { ExpenseStatistic } from "@/types";
 
 
 // Register the required Chart.js components
 ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
 
-export const expenseData = {
-  labels: ["Entertainment", "Bill Expense", "Others", "Investment"],
-  datasets: [
-    {
-      data: [30, 25, 15, 30],
-      backgroundColor: ["#343c6a", "#fc7900", "#232323", "#396aff"],
-      borderColor: "#ffffff",
-      borderWidth: 5,
-    },
-  ],
-};
 
 // Custom plugin to modify the radius of each segment
-
-const customShapePlugin: CustomShapePlugin = {
+const customShapePlugin = {
     id: "customRadius",
     beforeDraw: (chart: Chart) => {
         if (!chart || !chart.ctx) return;
@@ -46,37 +30,7 @@ const customShapePlugin: CustomShapePlugin = {
     },
 };
 
-// Chart options
-interface ChartOptions {
-    plugins: {
-        legend: {
-            display: boolean;
-        };
-        tooltip: {
-            callbacks: {
-                label: (context: { label: string; raw: number }) => string;
-            };
-        };
-        datalabels: {
-            formatter: (value: number, context: {
-                chart: { data: { labels: string[] } };
-                dataIndex: number;
-            }) => string;
-            color: string;
-            font: {
-                weight: string;
-                size: number;
-            };
-            textAlign: string;
-            align: string;
-            anchor: string;
-        };
-    };
-    responsive: boolean;
-    maintainAspectRatio: boolean;
-}
-
-export const chartOptions: ChartOptions = {
+const chartOptions: ChartOptions = {
     plugins: {
         legend: {
             display: false,
@@ -92,7 +46,7 @@ export const chartOptions: ChartOptions = {
         },
         datalabels: {
             formatter: (value, context) => {
-                const label = context.chart.data.labels[context.dataIndex];
+                const label = context.chart.data.labels?.[context.dataIndex] ?? '';
                 return `${value}%\n${label}`;
             },
             color: "#ffffff",
@@ -109,21 +63,45 @@ export const chartOptions: ChartOptions = {
     maintainAspectRatio: false,
 };
 
-function ExpenseStatistics() {
-  return (
-    <div className="flex flex-col gap-5 items-start justify-start">
-      <h2 className="text-primary text-[22px] font-semibold">
-        Expense Statistics
-      </h2>
-      <div className="bg-white rounded-[25px] w-[350px] h-[322px] p-4">
-        <Pie
-          data={expenseData}
-          options={chartOptions}
-          plugins={[customShapePlugin]}
-        />
-      </div>
-    </div>
-  );
+interface ExpenseStatisticsProps {
+    expenseStatistics: ExpenseStatistic[];
+}
+
+const ExpenseStatistics: React.FC<ExpenseStatisticsProps> = ({ expenseStatistics }) => {
+
+    const backgroundColor = ["#343c6a", "#fc7900", "#232323", "#396aff"];
+
+    const getRandomColor = () =>
+        `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, "0")}`;
+
+    const expenseData = {
+        labels: expenseStatistics.map((stat) => stat.label),
+        datasets: [
+            {
+                data: expenseStatistics.map((stat) => stat.value),
+                backgroundColor: expenseStatistics.map(
+                    (_, index) => backgroundColor[index] || getRandomColor()
+                ),
+                borderColor: "#ffffff",
+                borderWidth: 5,
+            },
+        ],
+    };
+
+    return (
+        <div className="flex flex-col gap-5 items-start justify-start">
+            <h2 className="text-primary text-[22px] font-semibold">
+                Expense Statistics
+            </h2>
+            <div className="bg-white rounded-[25px] w-[350px] h-[322px] p-4">
+                <Pie
+                    data={expenseData}
+                    options={chartOptions}
+                    plugins={[customShapePlugin]}
+                />
+            </div>
+        </div>
+    );
 }
 
 export default ExpenseStatistics;

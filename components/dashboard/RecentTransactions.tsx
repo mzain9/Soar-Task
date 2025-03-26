@@ -1,52 +1,10 @@
+import { Transaction } from "@/types";
 import Image from "next/image";
 
-type Transaction = {
-  id: number;
-  name: string;
-  date: string;
-  amount: number;
-  type: "credit" | "debit";
-  platform: "paypal" | "card" | "user";
-};
 
 type PlatformIcons = {
   [key in Transaction["platform"]]: { icon: string; fill: string };
 };
-
-const transactions: Transaction[] = [
-  {
-    id: 1,
-    name: "Deposit from my Card",
-    date: "2021-01-28",
-    amount: 850,
-    type: "debit",
-    platform: "card",
-  },
-  {
-    id: 2,
-    name: "Deposit Paypal",
-    date: "2021-01-25",
-    amount: 2500,
-    type: "credit",
-    platform: "paypal",
-  },
-  {
-    id: 3,
-    name: "Jemi Wilson",
-    date: "2021-01-21",
-    amount: 5400,
-    type: "credit",
-    platform: "user",
-  },
-  {
-    id: 4,
-    name: "Jemi Wilson",
-    date: "2021-01-21",
-    amount: 5400,
-    type: "credit",
-    platform: "user",
-  },
-];
 
 const platformIcons: PlatformIcons = {
   paypal: { icon: "/icons/dashboard/paypal.svg", fill: "#E7EDFF" },
@@ -63,14 +21,18 @@ const formatDate = (dateString: string): string => {
   return new Date(dateString).toLocaleDateString("en-GB", options);
 };
 
-const RecentTransactions: React.FC = () => {
+interface RecentTransactionsProps {
+  recentTransactions: Transaction[];
+}
+
+const RecentTransactions: React.FC<RecentTransactionsProps> = ({ recentTransactions }) => {
   return (
     <div className="flex flex-col gap-5 items-start justify-start">
       <h2 className="text-primary text-[22px] font-semibold">
         Recent Transactions
       </h2>
       <div className="bg-white rounded-[25px] w-[350px] h-[235px] p-4 overflow-x-auto scrollbar-hidden">
-        {transactions.map(({ id, name, date, amount, type, platform }) => (
+        {recentTransactions.map(({ id, name, date, amount, type, platform }) => (
           <div key={id} className="flex items-center gap-4 py-2">
             <div
               className="w-[55px] h-[55px] rounded-full flex items-center justify-center"
@@ -90,9 +52,8 @@ const RecentTransactions: React.FC = () => {
               </p>
             </div>
             <p
-              className={`text-base font-medium ${
-                type === "credit" ? "text-[#41d4a8]" : "text-[#ff4b4a]"
-              }`}
+              className={`text-base font-medium ${type === "credit" ? "text-[#41d4a8]" : "text-[#ff4b4a]"
+                }`}
             >
               {type === "credit" ? "+" : "-"}${amount.toLocaleString()}
             </p>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import React from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -12,6 +12,7 @@ import {
   type ChartOptions,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
+import type { WeeklyActivity } from "@/types";
 
 // Register Chart.js components
 ChartJS.register(
@@ -22,43 +23,6 @@ ChartJS.register(
   ChartTooltip,
   ChartLegend
 );
-
-export const transactionData = [
-  { day: "Sat", deposit: 240, withdraw: 470 },
-  { day: "Sun", deposit: 120, withdraw: 340 },
-  { day: "Mon", deposit: 260, withdraw: 320 },
-  { day: "Tue", deposit: 370, withdraw: 480 },
-  { day: "Wed", deposit: 240, withdraw: 150 },
-  { day: "Thu", deposit: 240, withdraw: 380 },
-  { day: "Fri", deposit: 330, withdraw: 390 },
-];
-
-// Prepare data for Chart.js format
-export const getChartData = () => {
-  return {
-    labels: transactionData.map((item) => item.day),
-    datasets: [
-      {
-        label: "Withdraw",
-        data: transactionData.map((item) => item.withdraw),
-        backgroundColor: "#232323",
-        borderRadius: 15,
-        borderSkipped: false,
-        barPercentage: 0.6,
-        categoryPercentage: 0.6,
-      },
-      {
-        label: "Deposit",
-        data: transactionData.map((item) => item.deposit),
-        backgroundColor: "#396aff",
-        borderRadius: 15,
-        borderSkipped: false,
-        barPercentage: 0.6,
-        categoryPercentage: 0.6,
-      },
-    ],
-  };
-};
 
 const options: ChartOptions<"bar"> = {
   responsive: true,
@@ -126,12 +90,39 @@ const options: ChartOptions<"bar"> = {
   },
 };
 
-function WeeklyActivity() {
-  const [chartData, setChartData] = useState<ReturnType<typeof getChartData> | null>(null);
 
-  useEffect(() => {
-    setChartData(getChartData());
-  }, []);
+interface WeeklyActivityProps {
+  weeklyActivity: WeeklyActivity[];
+}
+
+const WeeklyActivity: React.FC<WeeklyActivityProps> = ({ weeklyActivity }) => {
+
+  // Prepare data for Chart.js format
+  const getChartData = () => {
+    return {
+      labels: weeklyActivity.map((item) => item.day),
+      datasets: [
+        {
+          label: "Withdraw",
+          data: weeklyActivity.map((item) => item.withdraw),
+          backgroundColor: "#232323",
+          borderRadius: 15,
+          borderSkipped: false,
+          barPercentage: 0.6,
+          categoryPercentage: 0.6,
+        },
+        {
+          label: "Deposit",
+          data: weeklyActivity.map((item) => item.deposit),
+          backgroundColor: "#396aff",
+          borderRadius: 15,
+          borderSkipped: false,
+          barPercentage: 0.6,
+          categoryPercentage: 0.6,
+        },
+      ],
+    };
+  };
 
   return (
     <div className="flex flex-col gap-5 items-start justify-start">
@@ -154,7 +145,7 @@ function WeeklyActivity() {
 
           {/* Chart Container */}
           <div className="h-[85%] w-full">
-            {chartData && <Bar data={chartData} options={options} />}
+            <Bar data={getChartData()} options={options} />
           </div>
         </div>
       </div>

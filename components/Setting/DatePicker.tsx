@@ -3,19 +3,25 @@
 import { useState, useRef, useEffect } from "react";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
-import { format, parse } from "date-fns";
+import { format, parse, isValid } from "date-fns";
 import Image from "next/image";
 
-const DateOfBirthPicker = ({
-  selectedDate,
-  setSelectedDate,
-}: {
-  selectedDate: Date;
-  setSelectedDate: (e: React.ChangeEvent<HTMLInputElement>) => void;
+interface InputFieldProps {
+  label: string;
+  name: string;
+  type: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  error: string;
+}
+
+const DateOfBirthPicker: React.FC<InputFieldProps> = ({
+  label, name, type, value, onChange, error
 }) => {
-  console.log(selectedDate);
+  // Ensure `selectedDate` is valid or null
+  const selectedDate = value ? parse(value, "yyyy-MM-dd", new Date()) : null;
   const [inputValue, setInputValue] = useState(
-    format(selectedDate, "dd MMMM yyyy")
+    selectedDate && isValid(selectedDate) ? format(selectedDate, "dd MMMM yyyy") : ""
   );
   const [open, setOpen] = useState(false);
   const pickerRef = useRef<HTMLDivElement>(null);
@@ -39,19 +45,22 @@ const DateOfBirthPicker = ({
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
     const parsedDate = parse(e.target.value, "dd MMMM yyyy", new Date());
-    if (!isNaN(parsedDate.getTime())) {
+
+    if (isValid(parsedDate)) {
       e.target.value = format(parsedDate, "yyyy-MM-dd");
-      setSelectedDate(e);
+    } else {
+      e.target.value = ""; // Ensure empty input remains empty
     }
+    onChange(e);
   };
 
   return (
     <div className="flex flex-col gap-2">
-      <label className="text-black font-normal">Date of Birth</label>
+      <label className="text-black font-normal">{label}</label>
       <div className="relative" ref={pickerRef}>
         <input
-          type="text"
-          name="dob"
+          type={type}
+          name={name}
           value={inputValue}
           onChange={handleInputChange}
           placeholder="DD MMMM YYYY"
@@ -66,27 +75,30 @@ const DateOfBirthPicker = ({
             alt="Calendar"
             width={12}
             height={6}
-            className={`transform transition-transform ${
-              open ? "rotate-180" : ""
-            }`}
+            className={`transform transition-transform ${open ? "rotate-180" : ""}`}
           />
         </div>
+        {error && <span className="text-red-500 text-sm">{error}</span>}
         {open && (
           <div className="absolute z-10 bg-white shadow-lg rounded-lg mt-2 p-2">
             <DayPicker
               mode="single"
-              selected={selectedDate}
+              selected={selectedDate && isValid(selectedDate) ? selectedDate : undefined}
               onSelect={(date) => {
                 if (date) {
+                  const formattedDate = format(date, "yyyy-MM-dd");
                   const e = {
-                    target: { name: "dob", value: format(date, "yyyy-MM-dd") },
+                    target: { name, value: formattedDate },
                   } as React.ChangeEvent<HTMLInputElement>;
-                  setSelectedDate(e);
+                  onChange(e);
                   setInputValue(format(date, "dd MMMM yyyy"));
-                  setOpen(false);
+                } else {
+                  setInputValue("");
+                  onChange({ target: { name, value: "" } } as React.ChangeEvent<HTMLInputElement>);
                 }
+                setOpen(false);
               }}
-              defaultMonth={selectedDate || new Date()}
+              defaultMonth={selectedDate && isValid(selectedDate) ? selectedDate : new Date()}
               fromYear={1900}
               toYear={new Date().getFullYear()}
               captionLayout="dropdown"

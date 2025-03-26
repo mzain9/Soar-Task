@@ -1,23 +1,18 @@
 "use client";
 
+import { Card as CardType } from "@/types";
 import Image from "next/image";
 import React from "react";
 
 export interface CardProps {
-  cardData: {
-    cardNumber: string;
-    cardHolder: string;
-    validThru: string;
-    balance: string;
-  };
+  cardData: CardType;
   isDark: boolean;
 }
 
-const Card: React.FC<CardProps> = ({ cardData, isDark=true }) => {
+const Card: React.FC<CardProps> = ({ cardData, isDark = true }) => {
   const { cardNumber, cardHolder, validThru, balance } = cardData;
   //mask the card number
   const maskedCardNumber = cardNumber.replace(/^(\d{4}) \d{4} \d{4} (\d{4})$/, "$1 **** **** $2");
-
 
   const bgClass = isDark
     ? "bg-gradient-to-br from-[#5B5A6F] to-black"
