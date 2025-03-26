@@ -1,9 +1,12 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import EditProfile from "@/components/Setting/EditProfile";
-import Preferences from "@/components/Setting/Preferences";
-import Security from "@/components/Setting/Security";
+import dynamic from "next/dynamic";
+
+// Lazy load components
+const EditProfile = dynamic(() => import("@/components/Setting/EditProfile"));
+const Preferences = dynamic(() => import("@/components/Setting/Preferences"));
+const Security = dynamic(() => import("@/components/Setting/Security"));
 
 const tabs = ["Edit Profile", "Preferences", "Security"];
 

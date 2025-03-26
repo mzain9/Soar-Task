@@ -8,6 +8,8 @@ import WeeklyActivity from "@/components/dashboard/WeeklyActivity";
 import ExpenseStatistics from "@/components/dashboard/ExpenseStatistics";
 import QuickTransfer from "@/components/dashboard/QuickTransfer";
 import BalanceHistory from "@/components/dashboard/BalanceHistory";
+import ClipLoader from "react-spinners/ClipLoader";
+
 
 export default function DashboardPage() {
   const [data, setData] = useState<DashboardData | null>(null);
@@ -28,8 +30,20 @@ export default function DashboardPage() {
     fetchData();
   }, []);
 
-  if (loading) return <p>Loading...</p>;
-  if (!data) return <p>No data available</p>;
+  if (loading) {
+    return (
+      <div className="flex h-[calc(100vh-300px)] flex-col items-center justify-center text-center">
+        <ClipLoader color="var(--primary)" />
+      </div>
+    );
+  }
+  if (!data) {
+    return (
+      <div className="flex h-[calc(100vh-300px)] flex-col items-center justify-center text-center">
+        <h1 className="text-4xl font-bold">Data Not Found</h1>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-wrap gap-10 items-center justify-center w-full">

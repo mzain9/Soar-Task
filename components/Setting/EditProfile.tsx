@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import ProfileAvatar from "./ProfileAvatar";
 import { toast } from "sonner";
 import DateOfBirthPicker from "./DatePicker";
+import ClipLoader from "react-spinners/ClipLoader";
+
 
 interface FormData {
   name: string;
@@ -104,7 +106,9 @@ const EditProfile: React.FC = () => {
   };
 
   if (loading) {
-    return <div className="text-center text-lg font-semibold">Loading...</div>;
+    return <div className="flex h-[calc(100vh-300px)] flex-col items-center justify-center text-center">
+      <ClipLoader color="var(--primary)" />
+    </div>;
   }
 
   return (

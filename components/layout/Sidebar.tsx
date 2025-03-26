@@ -15,6 +15,8 @@ const menuItems = [
     href: "/transactions",
     icon: "/icons/sidebar/transactions.svg",
   },
+  { name: "Accounts", href: "/accounts", icon: "/icons/sidebar/accounts.svg" },
+
   {
     name: "Investments",
     href: "/investments",
@@ -32,7 +34,6 @@ const menuItems = [
     href: "/privileges",
     icon: "/icons/sidebar/privileges.svg",
   },
-  { name: "Accounts", href: "/accounts", icon: "/icons/sidebar/accounts.svg" },
   { name: "Setting", href: "/setting", icon: "/icons/sidebar/settings.svg" },
 ];
 
@@ -55,20 +56,18 @@ const Sidebar = () => {
             <Link href={item.href} key={item.name} className="relative group">
               <div
                 className={`flex items-center px-6 py-4 rounded-lg transition-all duration-300 relative 
-                              ${
-                                isActive
-                                  ? " text-sidebar-text-active"
-                                  : "hover:bg-gray-100 hover:text-black"
-                              }`}
+                              ${isActive
+                    ? " text-sidebar-text-active"
+                    : "hover:bg-gray-100 hover:text-black"
+                  }`}
               >
                 <div
                   className={`absolute left-0 top-1/2 transform -translate-y-1/2 w-1.5 h-14 rounded-tr-lg rounded-br-lg 
                               transition-all duration-300 
-                              ${
-                                isActive
-                                  ? "bg-black"
-                                  : "group-hover:bg-gray-300"
-                              }`}
+                              ${isActive
+                      ? "bg-black"
+                      : "group-hover:bg-gray-300"
+                    }`}
                 ></div>
 
                 <Image src={item.icon} alt={item.name} width={25} height={25} />

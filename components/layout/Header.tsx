@@ -7,12 +7,12 @@ import { usePathname } from "next/navigation";
 const pageTitles: Record<string, string> = {
   "/dashboard": "Overview",
   "/transactions": "Transactions",
+  "/accounts": "Accounts",
   "/investments": "Investments",
   "/credit-cards": "Credit Cards",
-  "/loan": "Loan",
+  "/loans": "Loans",
   "/services": "Services",
   "/setting": "Setting",
-  "/account": "Account",
   "/privileges": "Privileges",
 };
 
