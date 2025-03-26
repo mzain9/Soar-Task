@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import ProfileAvatar from "./ProfileAvatar";
+import { toast } from "sonner";
+import DateOfBirthPicker from "./DatePicker";
 
 const EditProfile: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -9,7 +11,7 @@ const EditProfile: React.FC = () => {
     email: "charlenereed@gmail.com",
     username: "Charlene Reed",
     password: "12345678",
-    dob: "25 January 1990",
+    dob: "1990-01-25",
     presentAddress: "San Jose, California, USA",
     permanentAddress: "San Jose, California, USA",
     city: "San Jose",
@@ -38,6 +40,7 @@ const EditProfile: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    toast.success("Profile Updated Successfully");
     console.log("Form Data Submitted:", formData);
   };
 
@@ -87,16 +90,10 @@ const EditProfile: React.FC = () => {
               className="bg-white rounded-2xl border-[1] border-border p-3 text-secondary font-normal outline-primary"
             />
           </div>
-          <div className="flex flex-col gap-2">
-            <label className="text-black font-normal">Date of Birth</label>
-            <input
-              type="text"
-              name="dob"
-              value={formData.dob}
-              onChange={handleChange}
-              className="bg-white rounded-2xl border-[1] border-border p-3 text-secondary font-normal outline-primary"
-            />
-          </div>
+          <DateOfBirthPicker
+            selectedDate={new Date(formData.dob)}
+            setSelectedDate={handleChange}
+          />
           <div className="flex flex-col gap-2">
             <label className="text-black font-normal">Present Address</label>
             <input
@@ -151,6 +148,7 @@ const EditProfile: React.FC = () => {
         <div className="flex justify-end">
           <button
             type="submit"
+            onClick={handleSubmit}
             className="right-0 relative cursor-pointer bg-black text-white rounded-2xl px-20 py-3 hover:bg-gray-800 text-[18px] font-normal"
           >
             Save

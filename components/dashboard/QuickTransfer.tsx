@@ -113,7 +113,7 @@ const QuickTransfer = () => {
               type="number"
               value={amount}
               min={0}
-              onChange={(e) => setAmount(e.target.value as unknown as number)}
+              onChange={(e) => setAmount(e.target.value as unknown as number || 0)}
               className="bg-[#edf1f7] px-6 py-2 text-secondary w-full h-[50px] outline-none"
             />
             <button
