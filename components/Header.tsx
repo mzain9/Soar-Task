@@ -21,7 +21,7 @@ const Header = () => {
   const title = pageTitles[pathname] || "Dashboard";
 
   return (
-    <header className=" flex relative items-center bg-white ml-60 h-[100px]">
+    <header className=" flex relative items-center bg-white h-[100px]">
       {/* Main Header Content */}
       <div className="w-full flex items-center justify-between align-middle px-10 h-[60px] relative">
         {/* Center Section: Title */}

@@ -44,7 +44,7 @@ const Sidebar = () => {
       {/* Left Section: Logo */}
       <div className="flex items-center justify-center align-middle w-60 h-[100px]">
         <Image src="/icons/logo-icon.svg" alt="Logo" width={35} height={35} />
-        <h1 className="text-primary text-[25px] font-bold px-2">Soar Task</h1>
+        <h1 className="text-primary text-[25px] font-extrabold px-2">Soar Task</h1>
       </div>
 
       <nav className="flex flex-col space-y-2">
