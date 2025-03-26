@@ -78,7 +78,7 @@ const DateOfBirthPicker: React.FC<InputFieldProps> = ({
             className={`transform transition-transform ${open ? "rotate-180" : ""}`}
           />
         </div>
-        {error && <span className="text-red-500 text-sm">{error}</span>}
+        {error && <span className="absolute -bottom-5 left-2 text-red-500 text-sm">{error}</span>}
         {open && (
           <div className="absolute z-10 bg-white shadow-lg rounded-lg mt-2 p-2">
             <DayPicker

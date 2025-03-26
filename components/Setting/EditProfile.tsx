@@ -63,7 +63,7 @@ const EditProfile: React.FC = () => {
     if (!formData.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) newErrors.email = "Invalid email format";
     if (formData.password.length < 8) newErrors.password = "Password must be at least 8 characters";
     if (!formData.dob) {
-      newErrors.dob = "Date of birth is required";
+      newErrors.dob = "Invalid date format";
     } else {
       const dobDate = new Date(formData.dob);
       const today = new Date();
@@ -73,6 +73,7 @@ const EditProfile: React.FC = () => {
       }
     }
     if (!formData.presentAddress.trim()) newErrors.presentAddress = "Present address is required";
+    if (!formData.permanentAddress.trim()) newErrors.permanentAddress = "Permanent address is required";
     if (!formData.city.trim()) newErrors.city = "City is required";
     if (!formData.country.trim()) newErrors.country = "Country is required";
     if (!formData.postalCode.match(/^\d{5}$/)) newErrors.postalCode = "Invalid postal code";
@@ -155,7 +156,7 @@ interface InputFieldProps {
 
 const InputField: React.FC<InputFieldProps> = ({ label, name, type, value, onChange, error }) => {
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2 relative">
       <label className="text-black font-normal">{label}</label>
       <input
         type={type}
@@ -164,7 +165,7 @@ const InputField: React.FC<InputFieldProps> = ({ label, name, type, value, onCha
         onChange={onChange}
         className="bg-white rounded-2xl border-[1] border-border p-3 text-secondary font-normal outline-primary"
       />
-      {error && <span className="text-red-500 text-sm">{error}</span>}
+      {error && <span className="absolute -bottom-5 left-2 text-red-500 text-sm">{error}</span>}
     </div>
   );
 }
