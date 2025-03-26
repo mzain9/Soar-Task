@@ -38,6 +38,14 @@ const transactions: Transaction[] = [
     type: "credit",
     platform: "user",
   },
+  {
+    id: 4,
+    name: "Jemi Wilson",
+    date: "2021-01-21",
+    amount: 5400,
+    type: "credit",
+    platform: "user",
+  },
 ];
 
 const platformIcons: PlatformIcons = {
@@ -61,7 +69,7 @@ const RecentTransactions: React.FC = () => {
       <h2 className="text-primary text-[22px] font-semibold">
         Recent Transactions
       </h2>
-      <div className="bg-white rounded-[25px] w-[350px] p-4">
+      <div className="bg-white rounded-[25px] w-[350px] h-[235px] p-4 overflow-x-auto scrollbar-hidden">
         {transactions.map(({ id, name, date, amount, type, platform }) => (
           <div key={id} className="flex items-center gap-4 py-2">
             <div

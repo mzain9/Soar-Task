@@ -29,7 +29,7 @@ const users: User[] = [
 
 const QuickTransfer = () => {
   const [amount, setAmount] = useState(525.5);
-  const [selectedUser, setSelectedUser] = useState<number | null>(null);
+  const [selectedUser, setSelectedUser] = useState<number | null>(users[0].id);
   const scrollContainer = useRef<HTMLDivElement>(null);
 
   const scrollRight = () => {

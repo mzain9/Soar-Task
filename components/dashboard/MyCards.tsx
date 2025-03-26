@@ -19,6 +19,7 @@ function MyCards() {
       <div className="flex gap-5 overflow-x-auto scrollbar-hidden w-full">
         <Card cardData={cardData} isDark={true} />
         <Card cardData={cardData} isDark={false} />
+        <Card cardData={cardData} isDark={false} />
       </div>
     </div>
   );
