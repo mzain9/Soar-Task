@@ -89,7 +89,7 @@ const EditProfile: React.FC = () => {
       return;
     }
     setUser(formData); // Update context
-    sessionStorage.setItem("user", JSON.stringify(formData)); // Persist update
+    localStorage.setItem("user", JSON.stringify(formData)); // Persist update
 
     toast.success("Profile Updated Successfully");
     console.log("Form Data Submitted:", formData);

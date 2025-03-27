@@ -26,7 +26,7 @@ const UserProvider = ({ children }: { children: ReactNode }) => {
     // Only run on client side
     const getUser = async () => {
       try {
-        const storedUser = sessionStorage.getItem("user");
+        const storedUser = localStorage.getItem("user");
         if (storedUser) {
           setUser(JSON.parse(storedUser));
           setLoading(false);
@@ -35,7 +35,7 @@ const UserProvider = ({ children }: { children: ReactNode }) => {
 
         const data = await fetchUser();
         setUser(data);
-        sessionStorage.setItem("user", JSON.stringify(data));
+        localStorage.setItem("user", JSON.stringify(data));
       } catch (error) {
         console.error("Error fetching user:", error);
       } finally {
