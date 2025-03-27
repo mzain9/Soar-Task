@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@svgr/webpack": "^8.1.0",
     "chart.js": "^4.4.8",
     "chartjs-plugin-datalabels": "^2.2.0",
     "dayjs": "^1.11.13",

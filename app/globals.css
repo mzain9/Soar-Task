@@ -33,6 +33,7 @@
   --line-bar: #1814F3;
 }
 
+
 @theme {
   --color-primary: var(--primary);
   --color-secondary: var(--secondary);

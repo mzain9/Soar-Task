@@ -64,7 +64,7 @@ const DateOfBirthPicker: React.FC<InputFieldProps> = ({
           value={inputValue}
           onChange={handleInputChange}
           placeholder="DD MMMM YYYY"
-          className="bg-white rounded-2xl border-[1] border-border p-3 text-secondary font-normal outline-primary w-full pr-10"
+          className="bg-white rounded-2xl border-[1] border-background-muted p-3 text-secondary font-normal outline-primary w-full pr-10"
         />
         <div
           onClick={() => setOpen((prev) => !prev)}
