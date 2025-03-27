@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 export async function GET() {
+    console.log("GET /api/user");
     return NextResponse.json({
         name: "Charlene Reed",
         email: "charlenereed@gmail.com",

@@ -1,59 +1,34 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ProfileAvatar from "./ProfileAvatar";
 import { toast } from "sonner";
 import ClipLoader from "react-spinners/ClipLoader";
 import FormFields from "./FormFields";
-
-export interface FormData {
-  name: string;
-  email: string;
-  username: string;
-  password: string;
-  dob: string;
-  presentAddress: string;
-  permanentAddress: string;
-  city: string;
-  country: string;
-  postalCode: string;
-  profilePic: string;
-}
+import { User } from "@/types";
+import { useUser } from "@/context/UserContext";
 
 const EditProfile: React.FC = () => {
-  const [formData, setFormData] = useState<FormData>({
-    name: "",
-    email: "",
-    username: "",
-    password: "",
-    dob: "",
-    presentAddress: "",
-    permanentAddress: "",
-    city: "",
-    country: "",
-    postalCode: "",
-    profilePic: "",
-  });
+  const { user, loading, setUser } = useUser();
+
+  const [formData, setFormData] = useState<User>(
+    user || {
+      name: "",
+      email: "",
+      username: "",
+      password: "",
+      dob: "",
+      presentAddress: "",
+      permanentAddress: "",
+      city: "",
+      country: "",
+      postalCode: "",
+      profilePic: "",
+    }
+  );
   console.log(formData);
 
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await fetch("/api/user", { cache: "no-store" });
-        const result = await response.json();
-        setFormData(result);
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchUserData();
-  }, []);
 
   const validateForm = (): boolean => {
     const newErrors: Record<string, string> = {};
@@ -113,6 +88,9 @@ const EditProfile: React.FC = () => {
     if (!validateForm()) {
       return;
     }
+    setUser(formData); // Update context
+    sessionStorage.setItem("user", JSON.stringify(formData)); // Persist update
+
     toast.success("Profile Updated Successfully");
     console.log("Form Data Submitted:", formData);
   };

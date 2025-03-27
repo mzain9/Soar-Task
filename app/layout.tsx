@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "@/styles/global.css";
 import { Toaster } from "sonner";
 import AppShell from "@/components/layout/AppShell";
 import { UserProvider } from "@/context/UserContext";

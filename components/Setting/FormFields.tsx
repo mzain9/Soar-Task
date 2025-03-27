@@ -1,14 +1,14 @@
 import React from "react";
 import InputField from "./InputField";
 import DateOfBirthPicker from "./DatePicker";
-import { FormData } from "./EditProfile";
+import { User } from "@/types";
 
 const FormFields = ({
   formData,
   handleChange,
   errors,
 }: {
-  formData: FormData;
+  formData: User;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   errors: Record<string, string>;
 }) => {
@@ -38,7 +38,7 @@ const FormFields = ({
               label={label}
               name={name}
               type={type}
-              value={formData[name as keyof FormData]}
+              value={formData[name as keyof User]}
               onChange={handleChange}
               error={errors[name]}
             />
@@ -50,7 +50,7 @@ const FormFields = ({
             label={label}
             name={name}
             type={type}
-            value={formData[name as keyof FormData]}
+            value={formData[name as keyof User]}
             onChange={handleChange}
             error={errors[name]}
           />

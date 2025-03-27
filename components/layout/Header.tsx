@@ -1,8 +1,10 @@
 "use client";
 
+import { useUser } from "@/context/UserContext";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ClipLoader } from "react-spinners";
 
 const pageTitles: Record<string, string> = {
   "/dashboard": "Overview",
@@ -21,7 +23,8 @@ interface HeaderProps {
 
 const Header = ({ onMobileMenuClick }: HeaderProps) => {
   const pathname = usePathname();
-  const title = pageTitles[pathname] || "Dashboard";
+  const title = pageTitles[pathname] || "WELCOME";
+  const { user, loading } = useUser();
 
   return (
     <header className="flex relative flex-wrap items-center bg-white max-h-[140px] md:h-[100px] px-8 md:px-10">
@@ -45,7 +48,9 @@ const Header = ({ onMobileMenuClick }: HeaderProps) => {
         </button>
 
         {/* Title */}
-        <h2 className="text-primary text-[20px] md:text-[28px] font-semibold">{title}</h2>
+        <h2 className="text-primary text-[20px] md:text-[28px] font-semibold">
+          {title}
+        </h2>
 
         {/* Right Section: Only show avatar on small screens */}
         <div className="flex items-center space-x-4">
@@ -92,13 +97,17 @@ const Header = ({ onMobileMenuClick }: HeaderProps) => {
           {/* Profile Icon Always Visible */}
           <div className="relative">
             <div className="bg-background-light w-[35px] h-[35px] md:w-[50px] md:h-[50px] rounded-full flex items-center justify-center overflow-hidden">
-              <Image
-                src="/icons/profile-icon.png"
-                alt="Profile"
-                width={50}
-                height={50}
-                className="object-fill"
-              />
+              {loading ? (
+                <ClipLoader color="var(--primary)" />
+              ) : (
+                <Image
+                  src={user?.profilePic || "/icons/profile-icon.png"}
+                  alt="Profile"
+                  width={50}
+                  height={50}
+                  className="object-fill"
+                />
+              )}
             </div>
           </div>
         </div>
