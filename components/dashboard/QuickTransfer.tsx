@@ -39,7 +39,7 @@ const QuickTransfer: React.FC<QuickTransferProps> = ({ quickTransfer }) => {
     setSelectedUser(null);
   };
   return (
-    <div className="flex flex-col gap-5 items-start justify-start w-full lg:w-[39%] max-w-full min-w-[350px]">
+    <div className="flex flex-col gap-5 items-start justify-start w-full lg:w-[39%] max-w-full min-w-[300px]">
       <h2 className="text-primary text-[16px] md:text-[22px] font-semibold">Quick Transfer</h2>
       <div className="bg-white rounded-[25px] w-full py-4 px-3 md:py-8 md:px-6">
         <div className="flex items-center w-full justify-between gap-2">

@@ -124,7 +124,7 @@ const WeeklyActivity: React.FC<WeeklyActivityProps> = ({ weeklyActivity }) => {
   };
 
   return (
-    <div className="flex flex-col gap-5 items-start justify-start w-full lg:w-[63%] max-w-full min-w-[350px]">
+    <div className="flex flex-col gap-5 items-start justify-start w-full lg:w-[63%] max-w-full min-w-[300px]">
       <h2 className="text-primary text-[16px] md:text-[22px] font-semibold">
         Weekly Activity
       </h2>

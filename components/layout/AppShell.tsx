@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "@/components/layout/Header";
 import Sidebar from "@/components/layout/Sidebar";
+import { usePathname } from "next/navigation";
 
 interface AppShellProps {
   children: React.ReactNode;
@@ -10,9 +11,14 @@ interface AppShellProps {
 
 export default function AppShell({ children }: AppShellProps) {
   const [isMobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+  const pathname = usePathname();
 
   const handleMobileMenuClick = () => setMobileSidebarOpen(true);
   const handleMobileSidebarClose = () => setMobileSidebarOpen(false);
+
+  useEffect(() => {
+    handleMobileSidebarClose();
+  }, [pathname]);
 
   return (
     <div className="flex min-h-screen w-full">

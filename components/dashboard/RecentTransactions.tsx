@@ -9,7 +9,7 @@ const RecentTransactions: React.FC<RecentTransactionsProps> = ({
   recentTransactions,
 }) => {
   return (
-    <div className="flex flex-col gap-5 items-start justify-start w-full lg:w-[32%] max-w-full min-w-[350px]">
+    <div className="flex flex-col gap-5 items-start justify-start w-full lg:w-[32%] max-w-full min-w-[300px]">
       <h2 className="text-primary text-[16px] md:text-[22px] font-semibold">
         Recent Transactions
       </h2>

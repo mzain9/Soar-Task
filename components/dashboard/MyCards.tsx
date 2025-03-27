@@ -9,7 +9,7 @@ interface MyCardsProps {
 
 const MyCards: React.FC<MyCardsProps> = ({ myCards }) => {
   return (
-    <div className="flex flex-col gap-5 items-start justify-start w-full lg:w-[63%] max-w-full min-w-[350px]">
+    <div className="flex flex-col gap-5 items-start justify-start w-full lg:w-[63%] max-w-full min-w-[300px]">
       <div className="flex justify-between w-full">
         <h2 className="text-primary text-[16px] md:text-[22px] font-semibold">My Cards</h2>
         <p
