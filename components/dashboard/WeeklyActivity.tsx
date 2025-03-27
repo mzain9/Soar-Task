@@ -30,7 +30,6 @@ interface WeeklyActivityProps {
 }
 
 const WeeklyActivity: React.FC<WeeklyActivityProps> = ({ weeklyActivity }) => {
-
   const options: ChartOptions<"bar"> = {
     responsive: true,
     maintainAspectRatio: false,
@@ -151,6 +150,6 @@ const WeeklyActivity: React.FC<WeeklyActivityProps> = ({ weeklyActivity }) => {
       </div>
     </div>
   );
-}
+};
 
 export default WeeklyActivity;

@@ -46,7 +46,10 @@ const Header = () => {
 
           {/* Setting Icon */}
           <div className="relative">
-            <Link href={"/setting"} className="bg-background-light w-[50px] h-[50px] rounded-full flex items-center justify-center">
+            <Link
+              href={"/setting"}
+              className="bg-background-light w-[50px] h-[50px] rounded-full flex items-center justify-center"
+            >
               <Image
                 src="/icons/setting-icon.svg"
                 alt="Settings"

@@ -1,7 +1,13 @@
 "use client"; // Error components must be client components
 import { useEffect } from "react";
 
-export default function Error({ error, reset }: { error: Error; reset: () => void }) {
+export default function Error({
+  error,
+  reset,
+}: {
+  error: Error;
+  reset: () => void;
+}) {
   useEffect(() => {
     console.error("Dashboard Error:", error);
   }, [error]);

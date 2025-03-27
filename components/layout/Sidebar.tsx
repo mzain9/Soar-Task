@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import DashboardIcon from "@/public/icons/sidebar/dashboard.svg";
@@ -12,6 +11,7 @@ import LoansIcon from "@/public/icons/sidebar/loans.svg";
 import ServicesIcon from "@/public/icons/sidebar/services.svg";
 import PrivilegesIcon from "@/public/icons/sidebar/privileges.svg";
 import SettingsIcon from "@/public/icons/sidebar/settings.svg";
+import SidebarItem from "./SidebarItem";
 
 const menuItems = [
   { name: "Dashboard", href: "/dashboard", icon: DashboardIcon },
@@ -33,37 +33,15 @@ const Sidebar = () => {
       {/* Left Section: Logo */}
       <div className="flex items-center justify-center align-middle w-60 h-[100px]">
         <Image src="/icons/logo-icon.svg" alt="Logo" width={35} height={35} />
-        <h1 className="text-primary text-[25px] font-extrabold px-2">Soar Task</h1>
+        <h1 className="text-primary text-[25px] font-extrabold px-2">
+          Soar Task
+        </h1>
       </div>
 
       <nav className="flex flex-col space-y-2">
-        {menuItems.map((item) => {
-          const isActive = pathname === item.href;
-          const Icon = item.icon as React.FC<React.SVGProps<SVGSVGElement>>;
-
-          return (
-            <Link href={item.href} key={item.name} className="relative group">
-              <div
-                className={`flex items-center px-6 py-4 rounded-lg transition-colors duration-300 relative 
-                              ${isActive
-                    ? " text-text-primary"
-                    : "group-hover:bg-light-gray group-hover:text-text-primary"
-                  }`}
-              >
-                <div
-                  className={`absolute left-0 top-1/2 transform -translate-y-1/2 w-1.5 h-14 rounded-tr-lg rounded-br-lg 
-                              transition-all duration-300 
-                              ${isActive
-                      ? "bg-black"
-                      : "group-hover:bg-gray-300"
-                    }`}
-                ></div>
-                <Icon className={`${isActive ? "fill-text-primary" : "fill-text-secondary"} group-hover:fill-text-primary`} />
-                <span className="ml-4 text-lg font-medium">{item.name}</span>
-              </div>
-            </Link>
-          );
-        })}
+        {menuItems.map((item) => (
+          <SidebarItem key={item.name} item={item} pathname={pathname} />
+        ))}
       </nav>
     </aside>
   );

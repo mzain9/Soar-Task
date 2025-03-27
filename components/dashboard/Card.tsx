@@ -12,7 +12,10 @@ export interface CardProps {
 const Card: React.FC<CardProps> = ({ cardData, isDark = true }) => {
   const { cardNumber, cardHolder, validThru, balance } = cardData;
   //mask the card number
-  const maskedCardNumber = cardNumber.replace(/^(\d{4}) \d{4} \d{4} (\d{4})$/, "$1 **** **** $2");
+  const maskedCardNumber = cardNumber.replace(
+    /^(\d{4}) \d{4} \d{4} (\d{4})$/,
+    "$1 **** **** $2"
+  );
 
   const bgClass = isDark
     ? "bg-gradient-to-br from-gradient-dark to-black"
@@ -64,7 +67,9 @@ const Card: React.FC<CardProps> = ({ cardData, isDark = true }) => {
       <div
         className={`bg-gradient-to-b ${overlayBg} to-transparent rounded-b-[25px] px-6 py-4 h-[70px] flex items-center justify-between`}
       >
-        <p className={`text-[22px] font-semibold ${textClass}`}>{maskedCardNumber}</p>
+        <p className={`text-[22px] font-semibold ${textClass}`}>
+          {maskedCardNumber}
+        </p>
         <div className="flex">
           <div
             className={`w-[30px] h-[30px] rounded-full ${circleBg} -mr-4 z-10`}

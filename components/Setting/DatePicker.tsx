@@ -16,12 +16,19 @@ interface InputFieldProps {
 }
 
 const DateOfBirthPicker: React.FC<InputFieldProps> = ({
-  label, name, type, value, onChange, error
+  label,
+  name,
+  type,
+  value,
+  onChange,
+  error,
 }) => {
   // Ensure `selectedDate` is valid or null
   const selectedDate = value ? parse(value, "yyyy-MM-dd", new Date()) : null;
   const [inputValue, setInputValue] = useState(
-    selectedDate && isValid(selectedDate) ? format(selectedDate, "dd MMMM yyyy") : ""
+    selectedDate && isValid(selectedDate)
+      ? format(selectedDate, "dd MMMM yyyy")
+      : ""
   );
   const [open, setOpen] = useState(false);
   const pickerRef = useRef<HTMLDivElement>(null);
@@ -75,15 +82,23 @@ const DateOfBirthPicker: React.FC<InputFieldProps> = ({
             alt="Calendar"
             width={12}
             height={6}
-            className={`transform transition-transform ${open ? "rotate-180" : ""}`}
+            className={`transform transition-transform ${
+              open ? "rotate-180" : ""
+            }`}
           />
         </div>
-        {error && <span className="absolute -bottom-5 left-2 text-red-500 text-sm">{error}</span>}
+        {error && (
+          <span className="absolute -bottom-5 left-2 text-red-500 text-sm">
+            {error}
+          </span>
+        )}
         {open && (
           <div className="absolute z-10 bg-white shadow-lg rounded-lg mt-2 p-2">
             <DayPicker
               mode="single"
-              selected={selectedDate && isValid(selectedDate) ? selectedDate : undefined}
+              selected={
+                selectedDate && isValid(selectedDate) ? selectedDate : undefined
+              }
               onSelect={(date) => {
                 if (date) {
                   const formattedDate = format(date, "yyyy-MM-dd");
@@ -94,11 +109,17 @@ const DateOfBirthPicker: React.FC<InputFieldProps> = ({
                   setInputValue(format(date, "dd MMMM yyyy"));
                 } else {
                   setInputValue("");
-                  onChange({ target: { name, value: "" } } as React.ChangeEvent<HTMLInputElement>);
+                  onChange({
+                    target: { name, value: "" },
+                  } as React.ChangeEvent<HTMLInputElement>);
                 }
                 setOpen(false);
               }}
-              defaultMonth={selectedDate && isValid(selectedDate) ? selectedDate : new Date()}
+              defaultMonth={
+                selectedDate && isValid(selectedDate)
+                  ? selectedDate
+                  : new Date()
+              }
               fromYear={1900}
               toYear={new Date().getFullYear()}
               captionLayout="dropdown"
