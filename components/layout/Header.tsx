@@ -25,12 +25,12 @@ const Header = () => {
       {/* Main Header Content */}
       <div className="w-full flex items-center justify-between align-middle px-10 h-[60px] relative">
         {/* Center Section: Title */}
-        <h2 className="text-primary-2 text-[28px] font-semibold">{title}</h2>
+        <h2 className="text-primary text-[28px] font-semibold">{title}</h2>
 
         {/* Right Section: Search + Icons */}
         <div className="flex items-center space-x-4">
           {/* Search Box */}
-          <div className="flex items-center bg-[#f5f7fa] rounded-full px-4 py-2 w-[255px]">
+          <div className="flex items-center bg-background-light rounded-full px-4 py-2 w-[255px]">
             <Image
               src="/icons/search-icon.svg"
               alt="Search"
@@ -40,13 +40,13 @@ const Header = () => {
             <input
               type="text"
               placeholder="Search for something"
-              className="ml-2 bg-transparent text-[#8ba3cb] outline-none w-full"
+              className="ml-2 bg-transparent text-text-muted outline-none w-full"
             />
           </div>
 
           {/* Setting Icon */}
           <div className="relative">
-            <Link href={"/setting"} className="bg-[#f5f7fa] w-[50px] h-[50px] rounded-full flex items-center justify-center">
+            <Link href={"/setting"} className="bg-background-light w-[50px] h-[50px] rounded-full flex items-center justify-center">
               <Image
                 src="/icons/setting-icon.svg"
                 alt="Settings"
@@ -58,7 +58,7 @@ const Header = () => {
 
           {/* Notification Icon */}
           <div className="relative">
-            <div className="bg-[#f5f7fa] w-[50px] h-[50px] rounded-full flex items-center justify-center">
+            <div className="bg-background-light w-[50px] h-[50px] rounded-full flex items-center justify-center">
               <Image
                 src="/icons/bell-icon.svg"
                 alt="Notifications"
@@ -70,7 +70,7 @@ const Header = () => {
 
           {/* Profile Icon */}
           <div className="relative">
-            <div className="bg-[#f5f7fa] w-[50px] h-[50px] rounded-full flex items-center justify-center overflow-hidden">
+            <div className="bg-background-light w-[50px] h-[50px] rounded-full flex items-center justify-center overflow-hidden">
               <Image
                 src="/icons/profile-icon.png"
                 alt="Profile"

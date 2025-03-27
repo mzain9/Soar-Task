@@ -22,7 +22,7 @@ export default function TabSection() {
             <div
               key={tab}
               className={`relative text-base font-medium cursor-pointer transition-colors duration-300 ${
-                activeTab === tab ? "text-[#232323]" : "text-[#718ebf]"
+                activeTab === tab ? "text-text-primary" : "text-secondary"
               }`}
               onClick={() => setActiveTab(tab)}
             >
@@ -32,11 +32,11 @@ export default function TabSection() {
         </div>
 
         {/* Underline */}
-        <div className="bg-[#f4f5f7] w-full h-px absolute left-0 top-[29px]"></div>
+        <div className="bg-light-gray w-full h-px absolute left-0 top-[29px]"></div>
         <motion.div
-          className="bg-[#232323] rounded-tl-[10px] rounded-tr-[10px] w-[114px] h-[3px] absolute top-[27px]"
+          className="bg-background-dark rounded-tl-[10px] rounded-tr-[10px] w-[114px] h-[3px] absolute top-[27px]"
           initial={{ left: 0 }}
-          animate={{ left: tabs.indexOf(activeTab) * 148 }}
+          animate={{ left: tabs.indexOf(activeTab) * 160 }}
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
         />
       </div>

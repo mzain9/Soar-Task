@@ -5,6 +5,7 @@ import { Pie } from "react-chartjs-2";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import { Chart } from "chart.js";
 import { ExpenseStatistic } from "@/types";
+import { getComputedColor } from "@/utils/color";
 
 
 // Register the required Chart.js components
@@ -69,7 +70,7 @@ interface ExpenseStatisticsProps {
 
 const ExpenseStatistics: React.FC<ExpenseStatisticsProps> = ({ expenseStatistics }) => {
 
-    const backgroundColor = ["#343c6a", "#fc7900", "#232323", "#396aff"];
+    const backgroundColor: string[] = ["--primary", "--warning", "--background-dark", "--accent"];
 
     const getRandomColor = () =>
         `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, "0")}`;
@@ -80,7 +81,7 @@ const ExpenseStatistics: React.FC<ExpenseStatisticsProps> = ({ expenseStatistics
             {
                 data: expenseStatistics.map((stat) => stat.value),
                 backgroundColor: expenseStatistics.map(
-                    (_, index) => backgroundColor[index] || getRandomColor()
+                    (_, index) => getComputedColor(backgroundColor[index]) || getRandomColor()
                 ),
                 borderColor: "#ffffff",
                 borderWidth: 5,

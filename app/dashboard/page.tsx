@@ -46,7 +46,7 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="flex flex-wrap gap-10 items-center justify-center w-full">
+    <div className="flex flex-wrap gap-x-14 gap-y-8 items-center justify-center w-full">
       <MyCards myCards={data.myCards} />
       <RecentTransactions recentTransactions={data.recentTransactions} />
       <WeeklyActivity weeklyActivity={data.weeklyActivity} />

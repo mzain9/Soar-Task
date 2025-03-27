@@ -1,72 +1,74 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f5f7fa;
-  --foreground: #343c6a;
+  --primary: #343C6A;
+  --secondary: #718EBF;
+  --accent: #396AFF;
+  --background-light: #F5F7FA;
+  --background-dark: #232323;
+  --background-muted: #DFEAF2;
+  --background-alt: #E6EFF5;
 
-  --primary: #343c6a;
-  --primary-foreground: #ffffff;
-
-  --secondary: #718ebf;
-  --secondary-foreground: #ffffff;
-
-  --navy: #343c6a;
-  --navy-foreground: #ffffff;
-
-  --blue-gray: #8ba3cb;
+  --text-primary: #232323;
+  --text-secondary: #B1B1B1;
+  --text-muted: #8BA3CB;
+  --light-blue: #E7EDFF;
+  --input-background: #EDF1F7;
+  --highlight: #FFBB38;
+  --success: #41D4A8;
+  --warning: #FC7900;
+  --danger: #FF4B4A;
+  --muted: #9199AF80;
+  --overlay: #00000033;
+  --transparent-white: #FFFFFFB2;
+  --semi-transparent-white: #FFFFFF80;
+  --teal: #16DBCC;
+  --gradient-blue: #2D60FF;
+  --gradient-dark: #5B5A6F;
+  --gradient-light: #E0E0E0;
+  --gradient-white: linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 100%);
+  --pastel-blue: #DCFAF8;
+  --soft-yellow: #FFF5D9;
   --light-gray: #f3f3f5;
-
-  --border: #dfe5ee;
-
-  --red: #ff4b4a;
-  --green: #41d4a8;
-  --orange: #fc7900;
-  --dark: #232323;
-
-  --sidebar-text-inactive: #b1b1b1;
-  --sidebar-text-active: #232323;
-
-  --border: #dfeaf2;
-  --text-color: #232323;
+  --line-bar: #1814F3;
 }
 
 @theme {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-
   --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-navy: var(--navy);
-  --color-navy-foreground: var(--navy-foreground);
-  --color-blue-gray: var(--blue-gray);
+  --color-accent: var(--accent);
+  --color-background-light: var(--background-light);
+  --color-background-dark: var(--background-dark);
+  --color-background-muted: var(--background-muted);
+  --color-background-alt: var(--background-alt);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-light-blue: var(--light-blue);
+  --color-input-background: var(--input-background);
+  --color-highlight: var(--highlight);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-muted: var(--muted);
+  --color-overlay: var(--overlay);
+  --color-transparent-white: var(--transparent-white);
+  --color-semi-transparent-white: var(--semi-transparent-white);
+  --color-teal: var(--teal);
+  --color-gradient-blue: var(--gradient-blue);
+  --color-gradient-dark: var(--gradient-dark);
+  --color-gradient-light: var(--gradient-light);
+  --color-gradient-white: var(--gradient-white);
+  --color-pastel-blue: var(--pastel-blue);
+  --color-soft-yellow: var(--soft-yellow);
   --color-light-gray: var(--light-gray);
-  --color-border: var(--border);
-  --color-red: var(--red);
-  --color-green: var(--green);
-  --color-orange: var(--orange);
-  --color-dark: var(--dark);
-  --color-sidebar-text-inactive: var(--sidebar-text-inactive);
-  --color-sidebar-text-active: var(--sidebar-text-active);
-  --color-border: var(--border);
-  --color-text-color: var(--text-color);
-
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-line-bar: var(--line-bar);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  /* font-family: Arial, Helvetica, sans-serif; */
+  background: var(--background-light);
+  color: var(--primary);
+  font-family: var(--font-inter);
 }
 
 
@@ -75,6 +77,8 @@ body {
 }
 
 .scrollbar-hidden {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }

@@ -41,7 +41,7 @@ const Sidebar = () => {
   const pathname = usePathname();
 
   return (
-    <aside className="bg-white text-sidebar-text-inactive w-60 h-screen fixed left-0 shadow-md z-10">
+    <aside className="bg-white text-text-secondary w-60 h-screen fixed left-0 shadow-md z-10">
       {/* Left Section: Logo */}
       <div className="flex items-center justify-center align-middle w-60 h-[100px]">
         <Image src="/icons/logo-icon.svg" alt="Logo" width={35} height={35} />
@@ -57,7 +57,7 @@ const Sidebar = () => {
               <div
                 className={`flex items-center px-6 py-4 rounded-lg transition-all duration-300 relative 
                               ${isActive
-                    ? " text-sidebar-text-active"
+                    ? " text-text-primary"
                     : "hover:bg-gray-100 hover:text-black"
                   }`}
               >

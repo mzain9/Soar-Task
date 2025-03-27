@@ -135,7 +135,7 @@ const EditProfile: React.FC = () => {
           })}
         </div>
         <div className="flex justify-end">
-          <button type="submit" className="relative cursor-pointer bg-black text-white rounded-2xl px-20 py-3 hover:bg-gray-800 text-[18px] font-normal">Save</button>
+          <button type="submit" className="relative cursor-pointer bg-background-dark text-white rounded-2xl px-20 py-3 hover:opacity-90 text-[18px] font-normal">Save</button>
         </div>
       </div>
     </form>
@@ -157,7 +157,7 @@ interface InputFieldProps {
 const InputField: React.FC<InputFieldProps> = ({ label, name, type, value, onChange, error }) => {
   return (
     <div className="flex flex-col gap-2 relative">
-      <label className="text-black font-normal">{label}</label>
+      <label className="text-text-primary font-normal">{label}</label>
       <input
         type={type}
         name={name}

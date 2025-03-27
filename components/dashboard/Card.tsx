@@ -15,12 +15,12 @@ const Card: React.FC<CardProps> = ({ cardData, isDark = true }) => {
   const maskedCardNumber = cardNumber.replace(/^(\d{4}) \d{4} \d{4} (\d{4})$/, "$1 **** **** $2");
 
   const bgClass = isDark
-    ? "bg-gradient-to-br from-[#5B5A6F] to-black"
-    : "bg-gradient-to-br from-[#E0E0E0] to-[#FFFFFF]";
+    ? "bg-gradient-to-br from-gradient-dark to-black"
+    : "bg-gradient-to-br from-gradient-light to-white";
   const textClass = isDark ? "text-white" : "text-primary";
-  const subTextClass = isDark ? "text-white/70" : "text-secondary";
+  const subTextClass = isDark ? "text-transparent-white" : "text-secondary";
   const overlayBg = isDark ? "from-white/15" : "from-black/10";
-  const circleBg = isDark ? "bg-white/50" : "bg-[#9199AF]/50";
+  const circleBg = isDark ? "bg-semi-transparent-white" : "bg-muted";
 
   const chipImage = isDark
     ? "/icons/dashboard/chip-light.svg"

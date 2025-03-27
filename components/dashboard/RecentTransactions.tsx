@@ -7,9 +7,9 @@ type PlatformIcons = {
 };
 
 const platformIcons: PlatformIcons = {
-  paypal: { icon: "/icons/dashboard/paypal.svg", fill: "#E7EDFF" },
-  card: { icon: "/icons/dashboard/card.svg", fill: "#FFF5D9" },
-  user: { icon: "/icons/dashboard/money.svg", fill: "#DCFAF8" },
+  paypal: { icon: "/icons/dashboard/paypal.svg", fill: "var(--light-blue)" },
+  card: { icon: "/icons/dashboard/card.svg", fill: "var(--soft-yellow)" },
+  user: { icon: "/icons/dashboard/money.svg", fill: "var(--pastel-blue)" },
 };
 
 const formatDate = (dateString: string): string => {
@@ -46,13 +46,13 @@ const RecentTransactions: React.FC<RecentTransactionsProps> = ({ recentTransacti
               />
             </div>
             <div className="flex-1">
-              <p className="text-text-color text-base font-medium">{name}</p>
+              <p className="text-text-primary text-base font-medium">{name}</p>
               <p className="text-secondary text-[15px] font-normal">
                 {formatDate(date)}
               </p>
             </div>
             <p
-              className={`text-base font-medium ${type === "credit" ? "text-[#41d4a8]" : "text-[#ff4b4a]"
+              className={`text-base font-medium ${type === "credit" ? "text-success" : "text-danger"
                 }`}
             >
               {type === "credit" ? "+" : "-"}${amount.toLocaleString()}

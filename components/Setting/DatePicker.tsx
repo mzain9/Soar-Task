@@ -56,7 +56,7 @@ const DateOfBirthPicker: React.FC<InputFieldProps> = ({
 
   return (
     <div className="flex flex-col gap-2">
-      <label className="text-black font-normal">{label}</label>
+      <label className="text-text-primary font-normal">{label}</label>
       <div className="relative" ref={pickerRef}>
         <input
           type={type}
