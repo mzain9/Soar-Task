@@ -1,6 +1,6 @@
 import React from "react";
-import Card from "./Card";
-import { Card as CardType } from "@/types";
+import Card from "@/components/dashboard/Card";
+import type { Card as CardType } from "@/types";
 import { toast } from "sonner";
 
 interface MyCardsProps {

@@ -1,4 +1,4 @@
-import Setting from "@/components/Setting/Setting";
+import Setting from "@/components/setting/Setting";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

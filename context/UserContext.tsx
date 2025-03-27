@@ -8,7 +8,7 @@ import {
   ReactNode,
 } from "react";
 import { fetchUser } from "@/lib/api";
-import { User } from "@/types";
+import type { User } from "@/types";
 
 interface UserContextType {
   user: User | null;
@@ -18,31 +18,33 @@ interface UserContextType {
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
-export const UserProvider = ({ children }: { children: ReactNode }) => {
+const UserProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const storedUser = sessionStorage.getItem("user"); // Check if user is stored
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
-      setLoading(false);
-    } else {
-      getUser();
-    }
-  }, []);
+    // Only run on client side
+    const getUser = async () => {
+      try {
+        const storedUser = sessionStorage.getItem("user");
+        if (storedUser) {
+          setUser(JSON.parse(storedUser));
+          setLoading(false);
+          return;
+        }
 
-  const getUser = async () => {
-    try {
-      const data = await fetchUser();
-      setUser(data);
-      sessionStorage.setItem("user", JSON.stringify(data)); // Cache user data
-    } catch (error) {
-      console.error("Error fetching user:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
+        const data = await fetchUser();
+        setUser(data);
+        sessionStorage.setItem("user", JSON.stringify(data));
+      } catch (error) {
+        console.error("Error fetching user:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    getUser();
+  }, []);
 
   return (
     <UserContext.Provider value={{ user, loading, setUser }}>
@@ -58,3 +60,5 @@ export const useUser = () => {
   }
   return context;
 };
+
+export default UserProvider;

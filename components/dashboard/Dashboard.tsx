@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { DashboardData } from "@/types";
+import type { DashboardData } from "@/types";
 import ClipLoader from "react-spinners/ClipLoader";
 
 import dynamic from "next/dynamic";

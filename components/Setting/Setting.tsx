@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 
 // Lazy load components
-const EditProfile = dynamic(() => import("@/components/Setting/EditProfile"));
-const Preferences = dynamic(() => import("@/components/Setting/Preferences"));
-const Security = dynamic(() => import("@/components/Setting/Security"));
+const EditProfile = dynamic(() => import("@/components/setting/EditProfile"));
+const Preferences = dynamic(() => import("@/components/setting/Preferences"));
+const Security = dynamic(() => import("@/components/setting/Security"));
 
 const tabs = ["Edit Profile", "Preferences", "Security"];
 

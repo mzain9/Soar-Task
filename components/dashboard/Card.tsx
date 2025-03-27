@@ -1,6 +1,6 @@
 "use client";
 
-import { Card as CardType } from "@/types";
+import type { Card as CardType } from "@/types";
 import Image from "next/image";
 import React from "react";
 

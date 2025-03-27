@@ -1,4 +1,4 @@
-import { Transaction } from "@/types";
+import type { Transaction } from "@/types";
 import Image from "next/image";
 import React from "react";
 

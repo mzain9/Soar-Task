@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import ProfileAvatar from "./ProfileAvatar";
+import ProfileAvatar from "@/components/setting/ProfileAvatar";
 import { toast } from "sonner";
 import ClipLoader from "react-spinners/ClipLoader";
-import FormFields from "./FormFields";
-import { User } from "@/types";
+import FormFields from "@/components/setting/FormFields";
+import type { User } from "@/types";
 import { useUser } from "@/context/UserContext";
 
 const EditProfile: React.FC = () => {

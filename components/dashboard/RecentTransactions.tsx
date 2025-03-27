@@ -1,5 +1,5 @@
-import { Transaction } from "@/types";
-import RecentTransactionsItem from "./RecentTransactionsItem";
+import type { Transaction } from "@/types";
+import RecentTransactionsItem from "@/components/dashboard/RecentTransactionsItem";
 
 interface RecentTransactionsProps {
   recentTransactions: Transaction[];

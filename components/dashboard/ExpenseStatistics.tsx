@@ -5,12 +5,12 @@ import {
   ArcElement,
   Tooltip,
   Legend,
-  ChartOptions,
+ type ChartOptions,
 } from "chart.js";
 import { Pie } from "react-chartjs-2";
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import { Chart } from "chart.js";
-import { ExpenseStatistic } from "@/types";
+import type { ExpenseStatistic } from "@/types";
 import { getComputedColor } from "@/utils/color";
 
 // Register the required Chart.js components
@@ -35,7 +35,7 @@ const customShapePlugin = {
   },
 };
 
-const chartOptions: ChartOptions = {
+const chartOptions: ChartOptions<"pie"> = {
   plugins: {
     legend: {
       display: false,

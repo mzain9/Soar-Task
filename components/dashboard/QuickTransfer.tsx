@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import Image from "next/image";
 import { toast } from "sonner";
 import type { QuickTransfer } from "@/types";
-import QuickTransferItem from "./QuickTransferItem";
+import QuickTransferItem from "@/components/dashboard/QuickTransferItem";
 
 interface QuickTransferProps {
   quickTransfer: QuickTransfer[];

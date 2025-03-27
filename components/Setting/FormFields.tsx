@@ -1,7 +1,7 @@
 import React from "react";
-import InputField from "./InputField";
-import DateOfBirthPicker from "./DatePicker";
-import { User } from "@/types";
+import InputField from "@/components/setting/InputField";
+import DateOfBirthPicker from "@/components/setting/DatePicker";
+import type { User } from "@/types";
 
 const FormFields = ({
   formData,

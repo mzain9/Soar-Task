@@ -1,13 +1,12 @@
 import Link from "next/link";
 import React from "react";
 
-const SidebarItem = ({
-  item,
-  pathname,
-}: {
+interface SidebarItemProps {
   item: { name: string; href: string; icon: React.ElementType };
   pathname: string;
-}) => {
+}
+
+const SidebarItem: React.FC<SidebarItemProps> = ({ item, pathname }) => {
   const isActive = pathname === item.href;
   const Icon = item.icon as React.FC<React.SVGProps<SVGSVGElement>>;
 

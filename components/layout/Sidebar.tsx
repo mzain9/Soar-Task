@@ -11,7 +11,7 @@ import LoansIcon from "@/public/icons/sidebar/loans.svg";
 import ServicesIcon from "@/public/icons/sidebar/services.svg";
 import PrivilegesIcon from "@/public/icons/sidebar/privileges.svg";
 import SettingsIcon from "@/public/icons/sidebar/settings.svg";
-import SidebarItem from "./SidebarItem";
+import SidebarItem from "@/components/layout/SidebarItem";
 
 const menuItems = [
   { name: "Dashboard", href: "/dashboard", icon: DashboardIcon },
