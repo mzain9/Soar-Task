@@ -29,22 +29,24 @@ const Sidebar = () => {
   const pathname = usePathname();
 
   return (
-    <aside className="bg-white text-text-secondary w-60 h-screen fixed left-0 shadow-md z-10">
+    <aside className="bg-white text-text-secondary w-60 h-screen fixed left-0 shadow-md z-10 flex flex-col">
       {/* Left Section: Logo */}
-      <div className="flex items-center justify-center align-middle w-60 h-[100px]">
+      <div className="bg-white z-10 flex items-center justify-center w-60 h-[100px]">
         <Image src="/icons/logo-icon.svg" alt="Logo" width={35} height={35} />
         <h1 className="text-primary text-[25px] font-extrabold px-2">
           Soar Task
         </h1>
       </div>
-
-      <nav className="flex flex-col space-y-2">
+  
+      {/* Sidebar Navigation */}
+      <nav className="flex-1 overflow-y-auto overflow-x-hidden">
         {menuItems.map((item) => (
           <SidebarItem key={item.name} item={item} pathname={pathname} />
         ))}
       </nav>
     </aside>
   );
+  
 };
 
 export default Sidebar;

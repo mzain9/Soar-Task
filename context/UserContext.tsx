@@ -28,9 +28,12 @@ const UserProvider = ({ children }: { children: ReactNode }) => {
       try {
         const storedUser = localStorage.getItem("user");
         if (storedUser) {
-          setUser(JSON.parse(storedUser));
-          setLoading(false);
-          return;
+          const user = JSON.parse(storedUser);
+          if (user) {
+            setUser(JSON.parse(storedUser));
+            setLoading(false);
+            return;
+          }
         }
 
         const data = await fetchUser();

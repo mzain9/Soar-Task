@@ -55,7 +55,7 @@ const Header = ({ onMobileMenuClick }: HeaderProps) => {
         {/* Right Section: Only show avatar on small screens */}
         <div className="flex items-center space-x-4">
           {/* Search Box, Settings, and Notifications Hidden on Small Screens */}
-          <div className="hidden md:flex items-center bg-background-light rounded-full px-4 py-2 w-[255px]">
+          <div className="hidden lg:flex items-center bg-background-light rounded-full px-4 py-2 w-[255px]">
             <Image
               src="/icons/search-icon.svg"
               alt="Search"
@@ -69,7 +69,7 @@ const Header = ({ onMobileMenuClick }: HeaderProps) => {
             />
           </div>
 
-          <div className="hidden md:flex relative">
+          <div className="hidden lg:flex relative">
             <Link
               href={"/setting"}
               className="bg-background-light w-[50px] h-[50px] rounded-full flex items-center justify-center"
@@ -83,7 +83,7 @@ const Header = ({ onMobileMenuClick }: HeaderProps) => {
             </Link>
           </div>
 
-          <div className="hidden md:flex relative">
+          <div className="hidden lg:flex relative">
             <div className="bg-background-light w-[50px] h-[50px] rounded-full flex items-center justify-center">
               <Image
                 src="/icons/bell-icon.svg"

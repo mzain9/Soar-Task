@@ -71,6 +71,8 @@ body {
   color: var(--primary);
   font-family: var(--font-inter);
   box-sizing: border-box;
+  height: 100vh;
+  width: calc(100vw - 16px);
 }
 
 

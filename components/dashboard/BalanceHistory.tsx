@@ -137,7 +137,7 @@ const BalanceHistory: React.FC<BalanceHistoryProps> = ({ balanceHistory }) => {
   };
 
   return (
-    <div className="flex flex-col gap-5 items-start justify-start w-full lg:w-[56%] max-w-full">
+    <div className="flex flex-col gap-5 items-start justify-start w-full lg:w-[56%] max-w-full min-w[300px]">
       <h2 className="text-primary text-[22px] font-semibold">
         Balance History
       </h2>
