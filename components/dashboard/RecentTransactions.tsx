@@ -9,11 +9,11 @@ const RecentTransactions: React.FC<RecentTransactionsProps> = ({
   recentTransactions,
 }) => {
   return (
-    <div className="flex flex-col gap-5 items-start justify-start">
-      <h2 className="text-primary text-[22px] font-semibold">
+    <div className="flex flex-col gap-5 items-start justify-start w-full lg:w-[32%] max-w-full min-w-[350px]">
+      <h2 className="text-primary text-[16px] md:text-[22px] font-semibold">
         Recent Transactions
       </h2>
-      <div className="bg-white rounded-[25px] w-[350px] h-[235px] p-4 overflow-x-auto scrollbar-hidden">
+      <div className="bg-white rounded-[15px] md:rounded-[25px] w-full h-[235px] p-4 overflow-x-auto scrollbar-hidden">
         {recentTransactions.map(
           ({ id, name, date, amount, type, platform }) => (
             <RecentTransactionsItem

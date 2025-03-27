@@ -15,22 +15,42 @@ const pageTitles: Record<string, string> = {
   "/setting": "Setting",
   "/privileges": "Privileges",
 };
+interface HeaderProps {
+  onMobileMenuClick: () => void;
+}
 
-const Header = () => {
+const Header = ({ onMobileMenuClick }: HeaderProps) => {
   const pathname = usePathname();
   const title = pageTitles[pathname] || "Dashboard";
 
   return (
-    <header className=" flex relative items-center bg-white h-[100px]">
+    <header className="flex relative flex-wrap items-center bg-white max-h-[140px] md:h-[100px] px-8 md:px-10">
       {/* Main Header Content */}
-      <div className="w-full flex items-center justify-between align-middle px-10 h-[60px] relative">
-        {/* Center Section: Title */}
-        <h2 className="text-primary text-[28px] font-semibold">{title}</h2>
+      <div className="w-full flex items-center justify-between align-middle h-[60px] relative">
+        <button onClick={onMobileMenuClick} className="md:hidden mr-4">
+          {/* Simple Hamburger Icon */}
+          <svg
+            className="w-5 h-5 text-primary"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
 
-        {/* Right Section: Search + Icons */}
+        {/* Title */}
+        <h2 className="text-primary text-[20px] md:text-[28px] font-semibold">{title}</h2>
+
+        {/* Right Section: Only show avatar on small screens */}
         <div className="flex items-center space-x-4">
-          {/* Search Box */}
-          <div className="flex items-center bg-background-light rounded-full px-4 py-2 w-[255px]">
+          {/* Search Box, Settings, and Notifications Hidden on Small Screens */}
+          <div className="hidden md:flex items-center bg-background-light rounded-full px-4 py-2 w-[255px]">
             <Image
               src="/icons/search-icon.svg"
               alt="Search"
@@ -44,8 +64,7 @@ const Header = () => {
             />
           </div>
 
-          {/* Setting Icon */}
-          <div className="relative">
+          <div className="hidden md:flex relative">
             <Link
               href={"/setting"}
               className="bg-background-light w-[50px] h-[50px] rounded-full flex items-center justify-center"
@@ -59,8 +78,7 @@ const Header = () => {
             </Link>
           </div>
 
-          {/* Notification Icon */}
-          <div className="relative">
+          <div className="hidden md:flex relative">
             <div className="bg-background-light w-[50px] h-[50px] rounded-full flex items-center justify-center">
               <Image
                 src="/icons/bell-icon.svg"
@@ -71,9 +89,9 @@ const Header = () => {
             </div>
           </div>
 
-          {/* Profile Icon */}
+          {/* Profile Icon Always Visible */}
           <div className="relative">
-            <div className="bg-background-light w-[50px] h-[50px] rounded-full flex items-center justify-center overflow-hidden">
+            <div className="bg-background-light w-[35px] h-[35px] md:w-[50px] md:h-[50px] rounded-full flex items-center justify-center overflow-hidden">
               <Image
                 src="/icons/profile-icon.png"
                 alt="Profile"
@@ -84,6 +102,19 @@ const Header = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="md:hidden w-full flex items-center justify-start bg-background-light rounded-full px-4 py-2 h-[50px] mb-4">
+        <Image
+          src="/icons/search-icon.svg"
+          alt="Search"
+          width={20}
+          height={20}
+        />
+        <input
+          type="text"
+          placeholder="Search for something"
+          className="ml-2 bg-transparent text-text-muted outline-none w-full"
+        />
       </div>
     </header>
   );

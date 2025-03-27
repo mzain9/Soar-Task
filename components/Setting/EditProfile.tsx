@@ -3,11 +3,10 @@
 import { useEffect, useState } from "react";
 import ProfileAvatar from "./ProfileAvatar";
 import { toast } from "sonner";
-import DateOfBirthPicker from "./DatePicker";
 import ClipLoader from "react-spinners/ClipLoader";
-import InputField from "./InputField";
+import FormFields from "./FormFields";
 
-interface FormData {
+export interface FormData {
   name: string;
   email: string;
   username: string;
@@ -127,56 +126,21 @@ const EditProfile: React.FC = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-8 w-full pl-4">
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col justify-center md:justify-between items-center md:items-start md:flex-row gap-14 w-full pl-4"
+    >
       <ProfileAvatar avatar={formData.profilePic} onChange={handleFileChange} />
       <div className="w-full">
-        <div className="grid grid-cols-2 gap-6 w-full mb-8">
-          {[
-            { label: "Your Name", name: "name", type: "text" },
-            { label: "User Name", name: "username", type: "text" },
-            { label: "Email", name: "email", type: "email" },
-            { label: "Password", name: "password", type: "password" },
-            { label: "Date of Birth", name: "dob", type: "text" },
-            { label: "Present Address", name: "presentAddress", type: "text" },
-            {
-              label: "Permanent Address",
-              name: "permanentAddress",
-              type: "text",
-            },
-            { label: "City", name: "city", type: "text" },
-            { label: "Postal Code", name: "postalCode", type: "text" },
-            { label: "Country", name: "country", type: "text" },
-          ].map(({ label, name, type }) => {
-            if (name === "dob") {
-              return (
-                <DateOfBirthPicker
-                  key={name}
-                  label={label}
-                  name={name}
-                  type={type}
-                  value={formData[name as keyof FormData]}
-                  onChange={handleChange}
-                  error={errors[name]}
-                />
-              );
-            }
-            return (
-              <InputField
-                key={name}
-                label={label}
-                name={name}
-                type={type}
-                value={formData[name as keyof FormData]}
-                onChange={handleChange}
-                error={errors[name]}
-              />
-            );
-          })}
-        </div>
+        <FormFields
+          formData={formData}
+          handleChange={handleChange}
+          errors={errors}
+        />
         <div className="flex justify-end">
           <button
             type="submit"
-            className="relative cursor-pointer bg-background-dark text-white rounded-2xl px-20 py-3 hover:opacity-90 text-[18px] font-normal"
+            className="relative w-full md:w-fit cursor-pointer bg-background-dark text-white rounded-2xl px-20 py-3 hover:opacity-90 text-[18px] font-normal"
           >
             Save
           </button>

@@ -63,7 +63,7 @@ const DateOfBirthPicker: React.FC<InputFieldProps> = ({
 
   return (
     <div className="flex flex-col gap-2">
-      <label className="text-text-primary font-normal">{label}</label>
+      <label className="text-text-primary text-[13px] md:text-[16px] font-normal">{label}</label>
       <div className="relative" ref={pickerRef}>
         <input
           type={type}
@@ -71,7 +71,7 @@ const DateOfBirthPicker: React.FC<InputFieldProps> = ({
           value={inputValue}
           onChange={handleInputChange}
           placeholder="DD MMMM YYYY"
-          className="bg-white rounded-2xl border-[1] border-background-muted p-3 text-secondary font-normal outline-primary w-full pr-10"
+          className="bg-white rounded-2xl border-[1] border-background-muted p-3 text-secondary text-[12px] md:text-[15px] font-normal outline-primary w-full pr-10"
         />
         <div
           onClick={() => setOpen((prev) => !prev)}
@@ -88,7 +88,7 @@ const DateOfBirthPicker: React.FC<InputFieldProps> = ({
           />
         </div>
         {error && (
-          <span className="absolute -bottom-5 left-2 text-red-500 text-sm">
+          <span className="absolute -bottom-5 left-2 text-red-500 text-[10px] md:text-sm">
             {error}
           </span>
         )}

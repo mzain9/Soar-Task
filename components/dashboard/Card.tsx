@@ -31,13 +31,15 @@ const Card: React.FC<CardProps> = ({ cardData, isDark = true }) => {
 
   return (
     <div
-      className={`relative min-w-[350px] h-[235px] rounded-[25px] ${bgClass} flex flex-col justify-between`}
+      className={`relative min-w-[265px] md:min-w-[350px] w-fit h-[170px] md:h-[235px] rounded-[15px] md:rounded-[25px] ${bgClass} flex flex-col justify-between`}
     >
       <div className="w-full h-full p-6 pb-0 flex justify-start flex-col">
         <div className="flex justify-between items-center">
           <div>
             <p className={`text-xs ${subTextClass}`}>Balance</p>
-            <p className={`text-xl font-semibold ${textClass}`}>{balance}</p>
+            <p className={`text-base md:text-xl font-normal ${textClass}`}>
+              {balance}
+            </p>
           </div>
           <Image
             src={chipImage}
@@ -48,16 +50,24 @@ const Card: React.FC<CardProps> = ({ cardData, isDark = true }) => {
           />
         </div>
 
-        <div className="flex justify-between my-auto mr-20">
+        <div className="flex justify-between my-auto mr-8 md:mr-20">
           <div>
-            <p className={`text-xs ${subTextClass}`}>CARD HOLDER</p>
-            <p className={`text-[15px] font-semibold ${textClass}`}>
+            <p className={`text-[10px] md:text-xs  ${subTextClass}`}>
+              CARD HOLDER
+            </p>
+            <p
+              className={`text-[13px] md:text-[15px] font-normal ${textClass}`}
+            >
               {cardHolder}
             </p>
           </div>
           <div>
-            <p className={`text-xs ${subTextClass}`}>VALID THRU</p>
-            <p className={`text-[15px] font-semibold ${textClass}`}>
+            <p className={`text-[10px] md:text-xs ${subTextClass}`}>
+              VALID THRU
+            </p>
+            <p
+              className={`text-[13px] md:text-[15px] font-normal ${textClass}`}
+            >
               {validThru}
             </p>
           </div>
@@ -67,7 +77,7 @@ const Card: React.FC<CardProps> = ({ cardData, isDark = true }) => {
       <div
         className={`bg-gradient-to-b ${overlayBg} to-transparent rounded-b-[25px] px-6 py-4 h-[70px] flex items-center justify-between`}
       >
-        <p className={`text-[22px] font-semibold ${textClass}`}>
+        <p className={`text-[15px] md:text-[22px] font-semibold ${textClass}`}>
           {maskedCardNumber}
         </p>
         <div className="flex">

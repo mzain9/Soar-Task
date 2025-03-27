@@ -8,7 +8,7 @@ interface ProfileAvatarProps {
 
 const ProfileAvatar: React.FC<ProfileAvatarProps> = ({ avatar, onChange }) => {
   return (
-    <div className="relative w-[98px] h-[91px]">
+    <div className="relative w-[100px] h-[100px] md:w-[98px] md:h-[91px]">
       <label className="cursor-pointer relative block w-[90px] h-[90px] rounded-full border border-gray-300">
         {avatar ? (
           <Image

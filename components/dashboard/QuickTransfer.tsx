@@ -39,12 +39,12 @@ const QuickTransfer: React.FC<QuickTransferProps> = ({ quickTransfer }) => {
     setSelectedUser(null);
   };
   return (
-    <div className="flex flex-col gap-5 items-start justify-start">
-      <h2 className="text-primary text-[22px] font-semibold">Quick Transfer</h2>
-      <div className="bg-white rounded-[25px] w-[445px] py-8 px-6">
+    <div className="flex flex-col gap-5 items-start justify-start w-full lg:w-[39%] max-w-full min-w-[350px]">
+      <h2 className="text-primary text-[16px] md:text-[22px] font-semibold">Quick Transfer</h2>
+      <div className="bg-white rounded-[25px] w-full py-4 px-3 md:py-8 md:px-6">
         <div className="flex items-center w-full justify-between gap-2">
           <div
-            className="flex items-center gap-4 overflow-x-auto w-[350px] scrollbar-hidden"
+            className="flex items-center gap-4 overflow-x-auto w-full scrollbar-hidden"
             ref={scrollContainer}
           >
             {quickTransfer.map(({ id, name, role, avatar }) => (
@@ -71,9 +71,9 @@ const QuickTransfer: React.FC<QuickTransferProps> = ({ quickTransfer }) => {
             />
           </button>
         </div>
-        <div className="flex justify-between items-center mt-6">
-          <p className="text-secondary text-base">Write Amount</p>
-          <div className="bg-input-background rounded-[50px] text-text-primary w-[265px] h-[50px] flex items-center overflow-hidden">
+        <div className="flex justify-between items-center mt-6 w-full">
+          <p className="text-secondary text-[12px] md:text-base">Write Amount</p>
+          <div className="bg-input-background rounded-[50px] text-text-primary w-[70%] h-[50px] flex items-center overflow-hidden">
             <input
               type="number"
               value={amount}
@@ -84,7 +84,7 @@ const QuickTransfer: React.FC<QuickTransferProps> = ({ quickTransfer }) => {
               className="bg-input-background px-6 py-2 text-secondary w-full h-[50px] outline-none"
             />
             <button
-              className="flex items-center justify-between bg-background-dark text-white text-[16px] font-medium px-6 py-4 rounded-[50px] w-[200px] h-[50px] cursor-pointer hover:opacity-90 transition-colors shadow-md"
+              className="flex items-center justify-between bg-background-dark text-white text-[13px] md:text-[16px] font-medium px-6 py-4 rounded-[50px] w-[200px] h-[50px] cursor-pointer hover:opacity-90 transition-colors shadow-md"
               onClick={handleSendMoney}
             >
               <p>Send</p>
@@ -93,6 +93,7 @@ const QuickTransfer: React.FC<QuickTransferProps> = ({ quickTransfer }) => {
                 alt="Send"
                 width={26}
                 height={22.5}
+                className="w-4 h-4 md:w-5 md:h-5"
               />
             </button>
           </div>

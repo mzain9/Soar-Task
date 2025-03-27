@@ -103,11 +103,11 @@ const ExpenseStatistics: React.FC<ExpenseStatisticsProps> = ({
   };
 
   return (
-    <div className="flex flex-col gap-5 items-start justify-start">
-      <h2 className="text-primary text-[22px] font-semibold">
+    <div className="flex flex-col gap-5 items-start justify-start w-full lg:w-[32%] max-w-full min-w-[250px]">
+      <h2 className="text-primary text-[16px] md:text-[22px] font-semibold">
         Expense Statistics
       </h2>
-      <div className="bg-white rounded-[25px] w-[350px] h-[322px] p-4">
+      <div className="bg-white rounded-[25px] w-full h-[322px] p-4">
         <Pie
           data={expenseData}
           options={chartOptions}

@@ -5,6 +5,7 @@ import { DashboardData } from "@/types";
 import ClipLoader from "react-spinners/ClipLoader";
 
 import dynamic from "next/dynamic";
+import { fetchDashboardData } from "@/lib/api";
 const MyCards = dynamic(() => import("@/components/dashboard/MyCards"));
 const RecentTransactions = dynamic(
   () => import("@/components/dashboard/RecentTransactions")
@@ -28,15 +29,9 @@ function Dashboard() {
 
   useEffect(() => {
     async function fetchData() {
-      try {
-        const response = await fetch("/api/dashboard", { cache: "no-store" });
-        const result = await response.json();
-        setData(result);
-      } catch (error) {
-        console.error("Error fetching dashboard data:", error);
-      } finally {
-        setLoading(false);
-      }
+      const data = await fetchDashboardData();
+      if (data) setData(data);
+      setLoading(false);
     }
     fetchData();
   }, []);
@@ -57,13 +52,19 @@ function Dashboard() {
   }
 
   return (
-    <div className="flex flex-wrap gap-x-14 gap-y-8 items-center justify-center w-full">
-      <MyCards myCards={data.myCards} />
-      <RecentTransactions recentTransactions={data.recentTransactions} />
-      <WeeklyActivity weeklyActivity={data.weeklyActivity} />
-      <ExpenseStatistics expenseStatistics={data.expenseStatistics} />
-      <QuickTransfer quickTransfer={data.quickTransfer} />
-      <BalanceHistory balanceHistory={data.balanceHistory} />
+    <div className="flex flex-wrap gap-x-14 gap-y-8 items-center justify-between w-full">
+      <div className="flex flex-col lg:flex-row justify-evenly gap-x-2 gap-y-8 w-full">
+        <MyCards myCards={data.myCards} />
+        <RecentTransactions recentTransactions={data.recentTransactions} />
+      </div>
+      <div className="flex flex-col lg:flex-row justify-evenly gap-x-2 gap-y-8 w-full">
+        <WeeklyActivity weeklyActivity={data.weeklyActivity} />
+        <ExpenseStatistics expenseStatistics={data.expenseStatistics} />
+      </div>
+      <div className="flex flex-col lg:flex-row justify-evenly gap-x-2 gap-y-8 w-full">
+        <QuickTransfer quickTransfer={data.quickTransfer} />
+        <BalanceHistory balanceHistory={data.balanceHistory} />
+      </div>
     </div>
   );
 }

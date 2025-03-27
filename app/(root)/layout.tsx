@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/layout/Header";
-import Sidebar from "@/components/layout/Sidebar";
 import { Toaster } from "sonner";
+import AppShell from "@/components/layout/AppShell";
+import { UserProvider } from "@/context/UserContext";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -23,15 +23,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} antialiased`}>
-        <Toaster />
-        <div className="flex min-h-screen">
-          <Sidebar />
-          <div className="flex flex-col flex-1 ml-60">
-            <Header />
-            <main className="flex-1 p-[30px]">{children}</main>
-          </div>
-        </div>
+      <body className={`${inter.variable} antialiased w-screen h-screen`}>
+        <UserProvider>
+          <Toaster />
+          <AppShell>{children}</AppShell>
+        </UserProvider>
       </body>
     </html>
   );

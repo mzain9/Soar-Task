@@ -30,7 +30,7 @@ const RecentTransactionsItem: React.FC<Transaction> = ({
   type,
 }) => {
   return (
-    <div key={id} className="flex items-center gap-4 py-2">
+    <div key={id} className="flex items-center justify-between gap-4 py-2">
       <div
         className="w-[55px] h-[55px] rounded-full flex items-center justify-center"
         style={{ backgroundColor: platformIcons[platform].fill }}
@@ -42,14 +42,14 @@ const RecentTransactionsItem: React.FC<Transaction> = ({
           height={28}
         />
       </div>
-      <div className="flex-1">
-        <p className="text-text-primary text-base font-medium">{name}</p>
-        <p className="text-secondary text-[15px] font-normal">
+      <div className="w-[200px]">
+        <p className="text-text-primary text-[14px] md:text-base font-medium">{name}</p>
+        <p className="text-secondary text-[12px] md:text-[15px] font-normal">
           {formatDate(date)}
         </p>
       </div>
       <p
-        className={`text-base font-medium ${
+        className={`text-[11px] md:text-base font-medium w-[80px] ${
           type === "credit" ? "text-success" : "text-danger"
         }`}
       >

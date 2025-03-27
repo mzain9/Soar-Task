@@ -70,6 +70,7 @@ body {
   background: var(--background-light);
   color: var(--primary);
   font-family: var(--font-inter);
+  box-sizing: border-box;
 }
 
 
